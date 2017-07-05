@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TrafficControl.Core
@@ -24,15 +25,23 @@ namespace TrafficControl.Core
         private bool IsRestictedForDay()
         {
             var dayOfWeek = _date.DayOfWeek;
-            var lastDigit = _licencePlate.LastDigit();
-            // FIXME: I should be a property
-            return Schedule.RestrictionForDay[dayOfWeek].Contains(lastDigit);
+            Dictionary<DayOfWeek, List<int>> restrictionForDay = Schedule.RestrictionForDay;
+            if (restrictionForDay.ContainsKey(dayOfWeek))
+            {
+                var lastDigit = _licencePlate.LastDigit();
+                return restrictionForDay[dayOfWeek].Contains(lastDigit);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private bool IsRestrictedForTime()
         {
+            int timeValue = _time.Value();
             return Schedule.RestrictionForHours.Any(
-                range => _time.Value() >= range.Start && _time.Value() <= range.End);
+                range => timeValue >= range.Start && timeValue <= range.End);
         }
     }
 }
