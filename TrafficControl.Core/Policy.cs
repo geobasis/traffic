@@ -26,12 +26,12 @@ namespace TrafficControl.Core
             var dayOfWeek = _date.DayOfWeek;
             var lastDigit = _licencePlate.LastDigit();
             // FIXME: I should be a property
-            return Schedule.RestrictionForDay()[dayOfWeek].Contains(lastDigit);
+            return Schedule.RestrictionForDay[dayOfWeek].Contains(lastDigit);
         }
 
         private bool IsRestrictedForTime()
         {
-            return Schedule.RestrictionForHours().Any(
+            return Schedule.RestrictionForHours.Any(
                 range => _time.Value() >= range.Start && _time.Value() <= range.End);
         }
     }
