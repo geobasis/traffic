@@ -1,14 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace TrafficControl.Core
 {
     public class MilitaryTime
     {
-        public static int Parse(string time)
+        private string _time;
+
+        public MilitaryTime(string time)
         {
-            string[] timeComponets = time.Split(':');
+            _time = time;
+        }
+
+        public int Value()
+        {
+            string[] timeComponets = _time.Split(':');
             string hourComponent = timeComponets[0];
             string minuteComponent = timeComponets[1];
 

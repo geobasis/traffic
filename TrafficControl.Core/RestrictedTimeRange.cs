@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TrafficControl.Core
+﻿namespace TrafficControl.Core
 {
     public struct RestrictedTimeRange
     {

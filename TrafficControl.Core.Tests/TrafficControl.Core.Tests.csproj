@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="LicensePlateTest.cs" />
     <Compile Include="MilitaryTimeTest.cs" />
+    <Compile Include="PolicyTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

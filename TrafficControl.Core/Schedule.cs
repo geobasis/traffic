@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace TrafficControl.Core
 {
     public class Schedule
     {
-        public static Dictionary<int, List<int>> RestrictionForDay()
+        public static Dictionary<DayOfWeek, List<int>> RestrictionForDay()
         {
-            return new Dictionary<int, List<int>>
+            return new Dictionary<DayOfWeek, List<int>>
             {
-                { 1, new List<int> { 1, 2 } }, // Monday
-                { 2, new List<int> { 3, 4 } }, // Tuesday
-                { 3, new List<int> { 5, 6 } }  // Wednesday
+                { DayOfWeek.Monday, new List<int> { 1, 2 } },
+                { DayOfWeek.Tuesday, new List<int> { 3, 4 } },
+                { DayOfWeek.Wednesday, new List<int> { 5, 6 } },
+                { DayOfWeek.Saturday, new List<int> { } }
             };
         }
 

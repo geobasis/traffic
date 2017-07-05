@@ -1,27 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TrafficControl.Core
 {
     public class Policy
     {
-        private string _licencePlate;
+        private LicencePlate _licencePlate;
         private DateTime _date;
-        private string _time;
+        private MilitaryTime _time;
 
-        public Policy(string licencePlate, DateTime date, string time)
+        public Policy(LicencePlate licencePlate, DateTime date, MilitaryTime time)
         {
             _licencePlate = licencePlate;
             _date = date;
             _time = time;
         }
 
+        public bool IsRestricted()
+        {
+            return IsRestictedForDay() && IsRestrictedForTime();
+        }
+
         private bool IsRestictedForDay()
         {
-            return false;
+            var dayOfWeek = _date.DayOfWeek;
+            var lastDigit = _licencePlate.LastDigit();
+            // FIXME: I should be a property
+            return Schedule.RestrictionForDay()[dayOfWeek].Contains(lastDigit);
+        }
+
+        private bool IsRestrictedForTime()
+        {
+            return Schedule.RestrictionForHours().Any(
+                range => _time.Value() >= range.Start && _time.Value() <= range.End);
         }
     }
 }

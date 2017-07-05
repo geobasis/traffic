@@ -9,7 +9,7 @@ namespace TrafficControl.Core.Tests
         [TestCase("14:28", 1428)]
         public void TestParse(string source, int expectedTime)
         {
-            Assert.That(MilitaryTime.Parse(source), Is.EqualTo(expectedTime));
+            Assert.That(new MilitaryTime(source).Value(), Is.EqualTo(expectedTime));
         }
     }
 }
