@@ -10,7 +10,7 @@ namespace TrafficControl.Core.Tests
         public void TestLastDigit(string number, int expectedLastDigit)
         {
             var licensePlate = new LicencePlate(number);
-            Assert.That(licensePlate.LastDigit(), Is.EqualTo(expectedLastDigit));
+            Assert.That(licensePlate.LastDigit, Is.EqualTo(expectedLastDigit));
         }
     }
 }

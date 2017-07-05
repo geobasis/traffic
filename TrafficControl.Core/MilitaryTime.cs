@@ -11,16 +11,18 @@ namespace TrafficControl.Core
             _time = time;
         }
 
-        public int Value()
-        {
-            string[] timeComponets = _time.Split(':');
-            string hourComponent = timeComponets[0];
-            string minuteComponent = timeComponets[1];
+        public int Value { 
+            get
+            {
+                string[] timeComponets = _time.Split(':');
+                string hourComponent = timeComponets[0];
+                string minuteComponent = timeComponets[1];
 
-            int hour = Convert.ToUInt16(hourComponent);
-            int minute = Convert.ToUInt16(minuteComponent);
+                int hour = Convert.ToUInt16(hourComponent);
+                int minute = Convert.ToUInt16(minuteComponent);
 
-            return hour * 100 + minute;
+                return hour * 100 + minute;
+            }
         }
     }
 }

@@ -11,10 +11,11 @@ namespace TrafficControl.Core
             _number = number;
         }
 
-        public int LastDigit()
-        {
-            var lastDigit = _number[_number.Length - 1].ToString();
-            return Convert.ToUInt16(lastDigit);
+        public int LastDigit { 
+            get {
+                var lastDigit = _number[_number.Length - 1].ToString();
+                return Convert.ToUInt16(lastDigit);
+                }
         }
     }
 }

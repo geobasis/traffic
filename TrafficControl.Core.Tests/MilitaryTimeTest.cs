@@ -11,7 +11,7 @@ namespace TrafficControl.Core.Tests
         [TestCase("19:35", 1935)]
         public void TestTimeValue(string source, int expectedTime)
         {
-            Assert.That(new MilitaryTime(source).Value(), Is.EqualTo(expectedTime));
+            Assert.That(new MilitaryTime(source).Value, Is.EqualTo(expectedTime));
         }
     }
 }

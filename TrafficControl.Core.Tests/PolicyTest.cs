@@ -19,7 +19,7 @@ namespace TrafficControl.Core.Tests
         {
             var policy = new Policy(
                 new LicencePlate(number), DateTime.Parse(date), new MilitaryTime(time));
-            Assert.That(policy.IsRestricted(), Is.EqualTo(expectedRestriction));
+            Assert.That(policy.IsRestricted, Is.EqualTo(expectedRestriction));
         }   
     }
 }

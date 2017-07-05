@@ -17,18 +17,19 @@ namespace TrafficControl.Core
             _time = time;
         }
 
-        public bool IsRestricted()
-        {
-            return IsRestictedForDay() && IsRestrictedForTime();
+        public bool IsRestricted { 
+            get
+            {
+                return IsRestictedForDay() && IsRestrictedForTime();
+            }
         }
-
         private bool IsRestictedForDay()
         {
             var dayOfWeek = _date.DayOfWeek;
-            Dictionary<DayOfWeek, List<int>> restrictionForDay = Schedule.RestrictionForDay;
+            Dictionary<DayOfWeek, List<int>> restrictionForDay = Schedule.DayRestricteds;
             if (restrictionForDay.ContainsKey(dayOfWeek))
             {
-                var lastDigit = _licencePlate.LastDigit();
+                var lastDigit = _licencePlate.LastDigit;
                 return restrictionForDay[dayOfWeek].Contains(lastDigit);
             }
             else
@@ -39,8 +40,8 @@ namespace TrafficControl.Core
 
         private bool IsRestrictedForTime()
         {
-            int timeValue = _time.Value();
-            return Schedule.RestrictionForHours.Any(
+            int timeValue = _time.Value;
+            return Schedule.RangeTimeRestricteds.Any(
                 range => timeValue >= range.Start && timeValue <= range.End);
         }
     }
