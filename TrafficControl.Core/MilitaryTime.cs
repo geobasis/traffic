@@ -21,7 +21,7 @@ namespace TrafficControl.Core
                 int hour = Convert.ToUInt16(hourComponent);
                 int minute = Convert.ToUInt16(minuteComponent);
 
-                return hour * 100 + minute;
+                return (hour * 100) + minute;
             }
         }
     }
