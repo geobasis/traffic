@@ -2,7 +2,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/v8vj61357fcw0s6l?svg=true)](https://ci.appveyor.com/project/geobasis/traffic)
 
-This Project implements the basic rules for the control of the vehicle circulation (Pico y Placa) in Quito City
+This work is a code challenge which implements the basic rules to control vehicle circulation ("Pico y Placa") in Quito City
 
 The Solution contains the TrafficControl.Core Project and TrafficControl.Core.Test Project.
 The TrafficControl.Core Project contains the classes with the structs and logic for the rules to control the vehicle circulation.
