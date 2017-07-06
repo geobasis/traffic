@@ -11,7 +11,8 @@ namespace TrafficControl.Core
             _time = time;
         }
 
-        public int Value { 
+        public int Value
+        { 
             get
             {
                 string[] timeComponets = _time.Split(':');

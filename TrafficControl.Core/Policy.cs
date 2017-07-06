@@ -17,31 +17,14 @@ namespace TrafficControl.Core
             _time = time;
         }
 
-        public bool IsRestricted { 
-            get
-            {
-                return IsRestictedForDay() && IsRestrictedForTime();
-            }
-        }
-        private bool IsRestictedForDay()
-        {
-            var dayOfWeek = _date.DayOfWeek;
-            Dictionary<DayOfWeek, List<int>> restrictionForDay = Schedule.DayRestricteds;
-            if (restrictionForDay.ContainsKey(dayOfWeek))
-            {
-                var lastDigit = _licencePlate.LastDigit;
-                return restrictionForDay[dayOfWeek].Contains(lastDigit);
-            }
-            else
-            {
-                return false;
-            }
-        }
+        public bool IsRestricted => IsRestictedForDay && IsRestrictedForTime();
+
+        private bool IsRestictedForDay => Schedule.RestrictedDays[_date.DayOfWeek].Contains(_licencePlate.LastDigit);
 
         private bool IsRestrictedForTime()
         {
             int timeValue = _time.Value;
-            return Schedule.RangeTimeRestricteds.Any(
+            return Schedule.RestrictedTimeRanges.Any(
                 range => timeValue >= range.Start && timeValue <= range.End);
         }
     }
